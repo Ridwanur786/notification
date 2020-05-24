@@ -8,12 +8,15 @@ let sw = await navigator.serviceWorker.register('sw.js');
 console.log(sw);
 })
 
-async function subscribe(){
+async function subscribe(registration){
 		
-	let push = await pushManager.subscribe({
+	let push = {
 		
 		userVisibileOnly: true,
 		applicationServerKey:'BLvAO65_zxxXM7wdai5CbINTsrLrcAjpUV4kz2v_w6ppAodzemiioYOQNREED5XgJD-Ly-EsO_e4UcKnh5qaG3s'
+	}
+	
+	return registration.pushManager.subscribe(push);
 	});
 	
 	console.log(JSON.stringify(push));
